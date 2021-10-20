@@ -17,10 +17,10 @@
     "author": "_Ì²_Ì²_Ì²_Ì²_Ì²ð±k.vð±_Ì²_Ì²_Ì²_Ì²_Ì²ð®ð³",
     "query": "hie",
     "response": "Hey,\nHow can we help you?",
-    "queryStartTime": "19-02-2021 21:20:09",
-    "queryEndTime": "20-02-2021 08:57:25",
-    "responseTime": "11 hours"
-  }
+    "queryTime": "19-02-2021 21:20:09",
+    "responseTime": "20-02-2021 08:57:25",
+    "queryResolutionTime": "11 hours"
+  },
 ]
 
 ```

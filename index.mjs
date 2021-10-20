@@ -30,7 +30,7 @@ function extractInfo({ participants, messages }) {
   let author = participants[0].name,
     query = "",
     response = "",
-    queryStartTime = null;
+    queryTime = null;
   let i = messages.length - 1;
   while (i >= 0) {
     const { sender_name, content, timestamp_ms } = messages[i];
@@ -41,17 +41,17 @@ function extractInfo({ participants, messages }) {
           author,
           query: query.trim(),
           response: response.trim(),
-          queryStartTime: dayjs(queryStartTime).format("DD-MM-YYYY HH:mm:ss"),
-          queryEndTime: dayjs(timestamp_ms).format("DD-MM-YYYY HH:mm:ss"),
-          responseTime: `${dayjs(timestamp_ms).diff(
-            dayjs(queryStartTime),
+          queryTime: dayjs(queryTime).format("DD-MM-YYYY HH:mm:ss"),
+          responseTime: dayjs(timestamp_ms).format("DD-MM-YYYY HH:mm:ss"),
+          queryResolutionTime: `${dayjs(timestamp_ms).diff(
+            dayjs(queryTime),
             "hours"
           )} hours`,
         });
-        (query = ""), (response = ""), (queryStartTime = null);
+        (query = ""), (response = ""), (queryTime = null);
       }
     } else {
-      queryStartTime = queryStartTime || timestamp_ms;
+      queryTime = queryTime || timestamp_ms;
       query += content + " ";
     }
     i--;
