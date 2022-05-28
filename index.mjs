@@ -11,15 +11,22 @@ const data = [];
 
 try {
   const files = await readdir(path.join(__dirname, "inbox"));
+  let count = 0;
   for (const file of files) {
     if (file !== ".DS_Store") {
-      let chatFile = await readFile(
-        path.join(__dirname, "inbox", file, "message_1.json")
-      );
-      chatFile = JSON.parse(chatFile);
-      extractInfo(chatFile);
+      try {
+        let chatFile = await readFile(
+          path.join(__dirname, "inbox", file, "message_1.json")
+        );
+        chatFile = JSON.parse(chatFile);
+        extractInfo(chatFile);
+        count++;
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
+  console.log('total folders processed:', count);
 
   await writeFile("output.json", JSON.stringify(data));
 } catch (err) {
